@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Výprava 2</title>
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #f0e6d2;
+      font-family: 'Georgia', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+      text-align: center;
+      background-image: url('https://i.imgur.com/zX3YzQe.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 600px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      margin-top: 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #d4af37;
+      color: black;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Výprava pokračuje</h1>
+    <p>Zadej odpověď a brána se otevře:</p>
+    <input type="text" id="answer" placeholder="Zadej odpověď...">
+    <button onclick="checkAnswer()">Potvrdit</button>
+    <div class="result" id="result">
+      <p>
+        Poslední kroky tě povedou tam, kde hlas ticha zní nejhlouběji,<br>
+        kde cesta dál vede nikoliv vpřed — ale vzhůru.<br>
+        Tam, kde koruny hledí k nebi a kořeny šeptají staré příběhy.<br><br>
+        Hledej strom, který nestojí skryt mezi jinými,<br>
+        ale vyniká svou samotou i odhodláním —<br>
+        vyrůstá vzhůru jako zapomenutá věž, jež čeká na návrat poutníka.<br><br>
+        Nebude tu ukazatel, nápověda, ani hlas.<br>
+        Jen tvé oči. Tvé nohy. A to, co ti bude připadat správné.<br><br>
+        Poznáš ho.<br>
+        Protože každý jeho detail ti připomene cestu,<br>
+        kterou jsi právě prošla.<br><br>
+        Tam, ve větvích výš než jsi kdy dosáhla,<br>
+        je ukryt poslední z darů.<br><br>
+        Ne pod kamenem. Ne v truhle. Ne za dveřmi.<br>
+        Ale v koruně, která tě přivítá jako starého přítele.<br><br>
+        Nechť tvá ruka sáhne výš než dřív.<br>
+        Nechť tvé srdce bije hlasitěji než kdy předtím —<br>
+        protože cesta se zde nezavírá.<br>
+        Jenom se mění ve vzpomínku, kterou si poneseš dál.<br><br>
+        — Tvůj společník na cestě, v temnotě i v jasu
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswer() {
+      const input = document.getElementById('answer').value.trim().toUpperCase();
+      if (input === 'SARUMAN') {
+        document.getElementById('result').style.display = 'block';
+      } else {
+        alert('Odpověď není správná. Zkus to znovu.');
+      }
+    }
+  </script>
+</body>
+</html>
