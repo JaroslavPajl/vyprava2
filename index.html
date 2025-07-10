@@ -1,96 +1,114 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Výprava 2</title>
+  <meta charset="UTF-8" />
+  <title>Výprava pokračuje</title>
   <style>
     body {
-      background-color: #1a1a1a;
+      background: url('https://cdn.pixabay.com/photo/2021/08/27/12/18/forest-6578551_1280.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #f0e6d2;
       font-family: 'Georgia', serif;
+      text-shadow: 1px 1px 3px #000;
+      padding: 2em;
+      margin: 0;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
-      padding: 20px;
-      text-align: center;
-      background-image: url('https://i.imgur.com/zX3YzQe.jpg');
-      background-size: cover;
-      background-position: center;
+      justify-content: flex-start;
     }
-    .container {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 30px;
-      border-radius: 15px;
-      max-width: 600px;
+    h2 {
+      margin-bottom: 0.1em;
     }
     input[type="text"] {
+      width: 100%;
+      max-width: 400px;
       padding: 10px;
-      width: 80%;
-      margin-top: 15px;
-      font-size: 16px;
-      border: none;
+      font-size: 18px;
+      margin-top: 10px;
       border-radius: 5px;
+      border: 1px solid #aaa;
+      box-sizing: border-box;
     }
     button {
-      margin-top: 10px;
       padding: 10px 20px;
-      font-size: 16px;
+      font-size: 18px;
+      margin-top: 10px;
       border: none;
+      background-color: #5a3e1b;
+      color: white;
       border-radius: 5px;
-      background-color: #d4af37;
-      color: black;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    .result {
+    button:hover {
+      background-color: #7b532b;
+    }
+    #result {
       margin-top: 20px;
-      display: none;
+      padding: 20px 25px;
+      background-color: rgba(30, 20, 10, 0.75);
+      border: 2px solid #8B5E3C;
+      border-radius: 12px;
+      box-shadow: 0 0 15px 3px rgba(139, 94, 60, 0.8);
+      font-family: 'Georgia', serif;
+      font-size: 19px;
+      color: #F3E9D2;
+      text-shadow: 1px 1px 3px #3B2F1B;
+      white-space: pre-wrap;
+      line-height: 1.5;
+      max-width: 600px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Výprava pokračuje</h1>
-    <p>Zadej odpověď a brána se otevře:</p>
-    <input type="text" id="answer" placeholder="Zadej odpověď...">
-    <button onclick="checkAnswer()">Potvrdit</button>
-    <div class="result" id="result">
-      <p>
-        Poslední kroky tě povedou tam, kde hlas ticha zní nejhlouběji,<br>
-        kde cesta dál vede nikoliv vpřed — ale vzhůru.<br>
-        Tam, kde koruny hledí k nebi a kořeny šeptají staré příběhy.<br><br>
-        Hledej strom, který nestojí skryt mezi jinými,<br>
-        ale vyniká svou samotou i odhodláním —<br>
-        vyrůstá vzhůru jako zapomenutá věž, jež čeká na návrat poutníka.<br><br>
-        Nebude tu ukazatel, nápověda, ani hlas.<br>
-        Jen tvé oči. Tvé nohy. A to, co ti bude připadat správné.<br><br>
-        Poznáš ho.<br>
-        Protože každý jeho detail ti připomene cestu,<br>
-        kterou jsi právě prošla.<br><br>
-        Tam, ve větvích výš než jsi kdy dosáhla,<br>
-        je ukryt poslední z darů.<br><br>
-        Ne pod kamenem. Ne v truhle. Ne za dveřmi.<br>
-        Ale v koruně, která tě přivítá jako starého přítele.<br><br>
-        Nechť tvá ruka sáhne výš než dřív.<br>
-        Nechť tvé srdce bije hlasitěji než kdy předtím —<br>
-        protože cesta se zde nezavírá.<br>
-        Jenom se mění ve vzpomínku, kterou si poneseš dál.<br><br>
-        — Tvůj společník na cestě, v temnotě i v jasu
-      </p>
-    </div>
-  </div>
+
+  <h2>Odpověz správně, poutníku...</h2>
+  <p>Zadej odpověď na hádanku:</p>
+
+  <input type="text" id="answer" placeholder="Sem napiš odpověď..." />
+  <button onclick="checkAnswer()">Potvrdit</button>
+
+  <div id="result"></div>
 
   <script>
     function checkAnswer() {
-      const input = document.getElementById('answer').value.trim().toUpperCase();
-      if (input === 'SARUMAN') {
-        document.getElementById('result').style.display = 'block';
+      const input = document.getElementById('answer').value.trim().toLowerCase();
+      const correct = "saruman";
+      const resultDiv = document.getElementById("result");
+
+      if (input === correct) {
+        resultDiv.innerHTML = `
+
+Poslední kroky tě povedou tam, kde hlas ticha zní nejhlouběji,<br>
+kde cesta dál vede nikoliv vpřed — ale vzhůru.<br>
+Tam, kde koruny hledí k nebi a kořeny šeptají staré příběhy.<br><br>
+Hledej strom, který nestojí skryt mezi jinými,<br>
+ale vyniká svou samotou i odhodláním —<br>
+vyrůstá vzhůru jako zapomenutá věž, jež čeká na návrat poutníka.<br><br>
+Nebude tu ukazatel, nápověda, ani hlas.<br>
+Jen tvé oči. Tvé nohy. A to, co ti bude připadat správné.<br><br>
+Poznáš ho.<br>
+Protože každý jeho detail ti připomene cestu,<br>
+kterou jsi právě prošla.<br><br>
+Tam, ve větvích výš než jsi kdy dosáhla,<br>
+je ukryt poslední z darů.<br><br>
+Ne pod kamenem. Ne v truhle. Ne za dveřmi.<br>
+Ale v koruně, která tě přivítá jako starého přítele.<br><br>
+Nechť tvá ruka sáhne výš než dřív.<br>
+Nechť tvé srdce bije hlasitěji než kdy předtím —<br>
+protože cesta se zde nezavírá.<br>
+Jenom se mění ve vzpomínku, kterou si poneseš dál.<br><br>
+ — Tvůj společník na cestě, v temnotě i v jasu
+<img src="https://github.com/JaroslavPajl/vyprava/blob/main/fotka2.JPG?raw=true" alt="Posel výpravy" style="max-width: 80%; border-radius: 12px; margin-top: 20px; box-shadow: 0 0 12px black;" />
+<img src="https://github.com/JaroslavPajl/vyprava/blob/main/fotka3.jpg?raw=true" alt="Posel výpravy" style="max-width: 80%; border-radius: 12px; margin-top: 20px; box-shadow: 0 0 12px black;" />
+        `;
       } else {
-        alert('Odpověď není správná. Zkus to znovu.');
+        resultDiv.innerHTML = "Tohle ještě není ta pravá odpověď. Zkus to znovu, poutníku...";
       }
     }
   </script>
+
 </body>
 </html>
